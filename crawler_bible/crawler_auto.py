@@ -13,9 +13,17 @@ proxies = {
 pre_url = 'https://www.jw.org'
 
 
-def get_books(url):
+def get_cn_book(url):
+    browser = webdriver.Chrome()
+    browser.get(url)
+
+
+
+
+def get_books(url, html=None):
     book_info = {}
-    html = requests.get(url, proxies=proxies).text
+    if html is None:
+        html = requests.get(url, proxies=proxies).text
     soup = BeautifulSoup(html)
     book_eles = soup.select("#onlineBibleTOCView > div > div.hebrewScriptures.clearfix")
     category = book_eles[0].select('h3')[0].text
