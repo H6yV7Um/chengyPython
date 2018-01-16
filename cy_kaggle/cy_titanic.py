@@ -4,9 +4,21 @@ import numpy as np
 from sklearn.preprocessing import Imputer
 
 
+def load_testset():
+    dataset = []
+    with open('/Users/nali/IdeaProjects/chengxiaoyPython/cy_kaggle/data/test.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            dataset.append(row)
+    dataset = np.array(dataset)
+    features = dataset[0, :]
+    x_train = dataset[1:, :]
+    return features, x_train
+
+
 def load_dataset():
     dataset = []
-    with open('/Users/nali/IdeaProjects/chengyPython/cy_kaggle/data/train.csv', newline='') as csvfile:
+    with open('/Users/nali/IdeaProjects/chengxiaoyPython/cy_kaggle/data/train.csv', newline='') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             dataset.append(row)
