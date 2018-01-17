@@ -19,7 +19,7 @@ book_dict = {}
 record_books = []
 info_file_name = 'data/info_cn.txt'
 
-with open(info_file_name, 'w+') as info_file:
+with open(info_file_name, 'r+') as info_file:
     for row in info_file.readlines():
         infos = row.strip('\n').split('\t')
         book_dict[infos[1]] = 1
