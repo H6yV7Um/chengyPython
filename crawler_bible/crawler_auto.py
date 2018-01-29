@@ -4,6 +4,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 proxies = {
     "http": "http://127.0.0.1:51263",
@@ -11,13 +12,6 @@ proxies = {
 }
 
 pre_url = 'https://www.jw.org'
-
-
-def get_cn_book(url):
-    browser = webdriver.Chrome()
-    browser.get(url)
-
-
 
 
 def get_books(url, html=None):
@@ -53,11 +47,17 @@ def get_audio_info(url):
     detail_list = []
     for a in a_list:
         detail_list.append(a['href'])
-    browser = webdriver.Chrome()
+    # phantomJs have been deprecated
+    # browser = webdriver.PhantomJS()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    browser = webdriver.Chrome(chrome_options=chrome_options)
+    # browser = webdriver.Chrome()
     chapter_info = {}
     for chapter_url in detail_list:
         browser.get(pre_url + chapter_url)
-        time.sleep(2)
+        time.sleep(3)
         soup = BeautifulSoup(browser.page_source, 'html.parser')
         title = soup.select('#article > article > header > h1')[0].text
         title = title.strip('\n').strip('  ').strip('\n').strip('  ')
