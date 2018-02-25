@@ -7,7 +7,7 @@ from sklearn.preprocessing import Imputer
 
 def load_testset():
     dataset = []
-    with open('/Users/nali/IdeaProjects/chengxiaoyPython/cy_kaggle/data/test.csv', newline='') as csvfile:
+    with open('C:/Users/Administrator/PycharmProjects/chengyPython/cy_kaggle/data/test.csv', newline='') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             dataset.append(row)
@@ -19,7 +19,7 @@ def load_testset():
 
 def load_dataset():
     dataset = []
-    with open('/Users/nali/IdeaProjects/chengxiaoyPython/cy_kaggle/data/train.csv', newline='') as csvfile:
+    with open('C:/Users/Administrator/PycharmProjects/chengyPython/cy_kaggle/data/train.csv', newline='') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             dataset.append(row)
